@@ -2,14 +2,14 @@
 
 //Tom's way of controlling post orders
 
-$sponoredPosts = array();
+$sponsoredPosts = array();
 $normalPosts = array();
 
 //run the loop, but only use it to collect data
 while(have_posts()) : the_post();
 
     if($post->post_type == "intelligence") {
-        $sponoredPosts[] = $post;
+        $sponsoredPosts[] = $post;
     } else {
         $normalPosts[] = $post;
     }
@@ -21,7 +21,7 @@ endwhile;
 
     //do sponsored first
 
-    foreach($sponoredPosts as $key => $post) {
+    foreach($sponsoredPosts as $key => $post) {
 
         echo '<h1>'.$post->post_title.'</h1>';
 
