@@ -1,6 +1,6 @@
 const { readFileSync, writeFileSync, readdirSync, rmSync, existsSync, mkdirSync, fs } = require('fs');
 
-const CID = 'QmS5GKrgqJdCPMBMxcq5oof5ULz8eH6YQ8Soqy5QurgnSR'; //from IPFS
+const CID = 'XXXXXXXXX'; //from IPFS
 const CIDimgURL = 'https://gateway.pinata.cloud/ipfs/'+CID+'/';
 const srcFile = './img/_VDLC_data.json';
 const externalURL = 'https://vectordefector.com';
