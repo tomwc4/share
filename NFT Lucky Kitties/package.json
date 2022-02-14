@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.5",
+    "@nomiclabs/hardhat-etherscan": "^3.0.1",
+    "@nomiclabs/hardhat-ganache": "^2.0.1",
+    "dotenv": "^16.0.0",
+    "run-func": "^2.0.0"
+  }
+}

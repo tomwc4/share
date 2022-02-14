@@ -1,0 +1,22 @@
+{
+  "name": "VD IPFS functions",
+  "version": "1.1.0",
+  "description": "",
+  "main": "ipfs.js",
+  "scripts": {
+    "pinata": "node pinata-ipfs.js",
+    "nftstorage": "node nftstorage-ipfs.js"
+  },
+  "keywords": [],
+  "author": "Tom Benway",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.25.0",
+    "base-path-converter": "^1.0.2",
+    "form-data": "^4.0.0",
+    "fs": "^0.0.1-security",
+    "mime": "^3.0.0",
+    "nft.storage": "^6.0.0",
+    "recursive-fs": "^2.1.0"
+  }
+}
