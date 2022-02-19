@@ -4,4 +4,6 @@ Contract: ERC721 (Hardhat, Solidity) for Ethereum/Polygon
 
 Generator: Node.js, Sharp
 
+DApp: Node.js & Ethers.js
+
 Testing: Ganache, Chai
