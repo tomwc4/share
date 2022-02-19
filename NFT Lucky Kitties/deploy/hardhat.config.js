@@ -51,7 +51,7 @@ module.exports = {
     polygon: {
       url: `https://polygon-mainnet.g.alchemy.com/v2/${ALCHEMY_KEY}`,
       accounts: [`${ACCOUNT_PRIVATE_KEY}`],
-      gasPrice: 35000000000 //(in wei) = 40 gwei / changes frequently, check pricing!
+      gasPrice: 40000000000 //(in wei) = 40 gwei / changes frequently, check pricing!
     },
   },
   etherscan: {
