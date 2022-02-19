@@ -13,7 +13,7 @@ contract Lucky_Kittehz is ERC721, ERC721URIStorage, Ownable, PullPayment {
     //constants
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIdCounter;
-    uint256 public constant TOTAL_SUPPLY = 10_000;
+    uint256 public constant TOTAL_SUPPLY = 5_000;
     uint256 public constant MINT_PRICE = 0.015 ether;
     mapping(string => uint8) existingURIs; //add uri mapping to ensure uniques
 
@@ -43,29 +43,30 @@ contract Lucky_Kittehz is ERC721, ERC721URIStorage, Ownable, PullPayment {
         return tokenId;
     }
 
-    function _burn(uint256 tokenId) internal override(ERC721, ERC721URIStorage) {
+    function _burn(uint256 tokenId) internal override (ERC721, ERC721URIStorage) {
         super._burn(tokenId);
     }
 
-    function tokenURI(uint256 tokenId)
-        public
-        view
-        override(ERC721, ERC721URIStorage)
-        returns (string memory){
+    function tokenURI(uint256 tokenId) public view override (ERC721, ERC721URIStorage) returns (string memory){
         return super.tokenURI(tokenId);
     }
 
-    function isContentOwned(string memory uri) public view returns (bool) {
-        return existingURIs[uri] == 1;
+    function getOwnedContent(string memory uri) public view returns (uint8) {
+        return existingURIs[uri];
     }
     
     function count() public view returns (uint256) {
         return _tokenIdCounter.current();
     }
 
-    /// @dev Overridden in order to make it an onlyOwner function
     function withdrawPayments(address payable payee) public override onlyOwner virtual {
         super.withdrawPayments(payee);
+    }
+
+     function transfer(address _seller, address _buyer, uint256 tokenId) external payable {
+        _approve(_seller, tokenId);
+        _approve(_buyer, tokenId);
+        safeTransferFrom(_seller, _buyer, tokenId);
     }
 
 }
