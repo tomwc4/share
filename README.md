@@ -1,6 +1,8 @@
 # share
 Tom's Sharing Folder
 
+2/21/2022 - added one of my "shrunken head" minimalist custom Wordpress themes
+
 2/13/2022 - added first NFT project
 
 12/24/2021 - added new VectorDefector full theme
