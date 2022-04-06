@@ -2,8 +2,7 @@ require('dotenv').config();
 const { task } = require("hardhat/config");
 const { ethers } = require("@nomiclabs/hardhat-ethers");
 const { writeFileSync, readFileSync, existsSync, fs } = require('fs');
-const fetch = require('node-fetch');
-const MAX_ITEMS = 50;
+const MAX_ITEMS = 10;
 const VERIFY_TIMEOUT = 3000;
 const MINT_TIMEOUT = 1000;
 const { NFT_CONTRACT_NAME, NFT_CONTRACT_ADDRESS, NFT_IPFS_ADDRESS, WALLET_ADDRESS } = process.env;
@@ -32,15 +31,6 @@ task("count", "Prints out total number in collection").setAction(async function 
   console.log(counted);
 });
 
-/*
-//public check supply (note this only works on ERC721Enumerated)
-task("check-supply", "Prints out total supply in collection contract").setAction(async function (taskArguments, hre) {
-  const contract = await hre.ethers.getContractAt(NFT_CONTRACT_NAME, NFT_CONTRACT_ADDRESS);
-  const total = await contract.totalSupply();
-  console.log(total);
-});
-*/
-
 //return account list of attached wallet
 task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
   const accounts = await hre.ethers.getSigners();
@@ -60,12 +50,15 @@ task("deploy", "Deploys the NFT.sol contract").setAction(async function (taskArg
   console.log(`Contract deployed to address: ${nft.address}`); //save this address it returns!
 });
 
-task("get-mint-status", "Checks mint status of provided URI").setAction(async function (taskArguments, hre) {
+task("get-mint-status", "Checks mint status of provided URI")
+.addParam("uri", "The tokenID to fetch metadata for")
+.setAction(async function (taskArguments, hre) {
   const contract = await hre.ethers.getContractAt(NFT_CONTRACT_NAME, NFT_CONTRACT_ADDRESS);
-  const result = await contract.count();
+  const result = await contract.getOwnedContent(taskArguments.uri);
   console.log(result);
 });
 
+/* //needs to be implmented public not internal
 task("burn", "burns the passed tokenID")
 .addParam("tokenId", "The tokenID to fetch metadata for")
 .setAction(async function (taskArguments, hre) {
@@ -73,6 +66,7 @@ task("burn", "burns the passed tokenID")
   const result = await contract._burn(taskArguments.tokenId);
   console.log(result);
 });
+*/ 
 
 //runs the mint task from the contract
 task("mint", "Mints from the NFT contract").setAction(async function (taskArguments, hre) {
@@ -155,10 +149,18 @@ task("token-uri", "Fetches the token metadata for the given token ID")
   const contract = await hre.ethers.getContractAt(NFT_CONTRACT_NAME, NFT_CONTRACT_ADDRESS);
   const response = await contract.tokenURI(taskArguments.tokenId);
 
-  console.log(NFT_IPFS_ADDRESS);
+  //console.log(NFT_IPFS_ADDRESS);
     
   const metadata_url = response;
   console.log(`Metadata URL: ${metadata_url}`);
+});
+
+task("update-token-uri", "Updates the token metadata URI for the given token ID")
+.addParam("tokenId", "The tokenID to set metadata for")
+.addParam("uri", "The URI to set")
+.setAction(async function (taskArguments, hre) {
+  const contract = await hre.ethers.getContractAt(NFT_CONTRACT_NAME, NFT_CONTRACT_ADDRESS);
+  const updateURI = await contract.updateTokenURI(taskArguments.tokenId, taskArguments.uri);
 });
 
 task("transfer", "Transfer NFTs to another address")
