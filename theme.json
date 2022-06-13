@@ -1,0 +1,89 @@
+{
+	"schema": "https://schemas.wp.org/trunk/theme.json",
+    "version": 2,
+    "settings": {
+        "layout": {
+            "contentSize": "800px",
+            "wideSize": "1000px"
+        },
+        "color": {
+            "palette": {
+                "default": [
+                        {
+                            "name": "Black",
+                            "slug": "black",
+                            "color": "#000000"
+                        },
+                        {
+                            "name": "White",
+                            "slug": "white",
+                            "color": "#ffffff"
+                        }
+                    ]
+            },
+            "gradients": [
+                {
+				    "slug": "black-to-white",
+					"gradient": "linear-gradient(160deg, var(--wp--preset--color--black), var(--wp--preset--color--white))",
+					"name": "Black to White"
+				},
+				{
+					"slug": "white-to-black",
+					"gradient": "linear-gradient(160deg, var(--wp--preset--color--white), var(--wp--preset--color--black))",
+					"name": "White to Black"
+				}
+            ],
+            "duotone": [
+                {
+					"slug": "black-and-white",
+					"colors": [
+                        "#000000",
+                        "#ffffff"
+                    ],
+					"name": "Black and White"
+				},
+				{
+					"slug": "white-and-black",
+					"colors": [
+                        "#ffffff",
+                        "#000000"
+                    ],
+					"name": "White and Black"
+				}
+            ]
+        },
+        "spacing": {
+			"padding": [],
+			"units": []
+		},
+        "typography": {
+            "fontFamilies": [
+				{
+					"fontFamily": "Helvetica Neue, Helvetica, Arial, sans-serif",
+					"slug": "helvetica-arial"
+				},
+				{
+					"fontFamily": "Geneva, Tahoma, Verdana, sans-serif",
+					"slug": "geneva-verdana"
+				}
+            ],
+            "fontSizes": [
+				{
+					"slug": "small",
+					"size": "18px",
+					"name": "Small"
+				},
+				{
+					"slug": "large",
+					"size": "24px",
+					"name": "Large"
+				}
+            ]
+        },
+        "blocks": {
+            "core/paragraph": {
+             
+            }
+        }
+    }
+}
