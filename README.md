@@ -1,7 +1,7 @@
 # share
 Tom's Sharing Folder
 
-6/12/2022 - added new WP Block controls by role and theme.json for default styling
+6/12/2022 - added new WP Block controls by role and theme.json for default styling, added NFT and webGL/Unity 3D JS front-ends
 
 2/21/2022 - added one of my "shrunken head" minimalist custom Wordpress themes
 
